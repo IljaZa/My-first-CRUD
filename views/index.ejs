@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>BUS TERMINAL</h1>
+
+  <form action="/stops" method="POST">
+    <label ><b><u>ADD A STOP</u></b></label>
+    <br>
+    <input type="text" placeholder="Rautatientori" name="stop">
+    <button type="submit">SEND</button>
+  </form>
+  <br>
+  <form>
+    <label><b><u>UPDATE A STOP</u></b></label>
+    <br>
+    <select name="oldStops" id="oldStops">
+      <% for (var i=0; i < stops.length; i++) { %>
+        <option><%= stops[i].stop %></option>
+      <%}%>
+    </select>
+    <input id="newStops" type="text" placeholder="New" name="newStops">
+    <button id="update-button">UPDATE</button>
+  </form>
+  <br>
+  <br>
+
+  <form>
+    <label><b><u>DELETE A STOP</u></b></label>
+    <br>
+    <select name="deleteStop" id="deleteStop">
+      <% for (var i=0; i < stops.length; i++) { %>
+        <option>
+          <%= stops[i].stop %>
+        </option>
+      <%}%>
+    </select>
+    <button id="delete-button">DELETE</button>
+  </form>
+
+  <% for (var i = 0; i < stops.length; i++) { %>
+    <p id="stop-<%= i %>"><%= stops[i].stop %></p>
+  <%}%>
+
+
+  <button id="console-log">HSL API TEST</button>
+  <script src="/main.js"></script>
+</body>
+
+</html>
